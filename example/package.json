@@ -1,0 +1,16 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node .",
+    "refresh": "yarn cache clean && rm -rf node_modules && rm -f yarn.lock && yarn",
+    "test": "ava"
+  },
+  "dependencies": {
+    "ava": "3.3.0",
+    "test-lib": "file:../test-lib.tgz"
+  }
+}

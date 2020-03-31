@@ -1,0 +1,50 @@
+{
+  "name": "make-cli-tool",
+  "license": "MIT",
+  "version": "0.0.0",
+  "keywords": [],
+  "scripts": {
+    "build": "rm -rf dist && parcel build src/index.js --no-cache",
+    "test": "ava",
+    "lint": "eslint src",
+    "format": "prettier --write \"src/**/*.js\"",
+    "typecheck": "tsc src/*.js",
+    "check-all": "yarn lint && yarn typecheck ",
+    "plop": "plop",
+    "release": "yarn clean && yarn audit && yarn build && np",
+    "clean": "rm -f make-cli-tool.tgz",
+    "build-test": "./build-test.sh"
+  },
+  "files": [
+    "dist/"
+  ],
+  "ava": {
+    "babel": true
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "semi": false,
+    "singleQuote": true
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test"
+    }
+  },
+  "main": "dist/index.js",
+  "devDependencies": {
+    "@ava/babel": "1.0.1",
+    "ava": "3.5.2",
+    "eslint": "6.8.0",
+    "eslint-config-prettier": "6.10.1",
+    "eslint-plugin-ava": "10.2.0",
+    "husky": "4.2.3",
+    "lint-staged": "10.1.0",
+    "np": "6.2.0",
+    "parcel": "2.0.0-alpha.3.2",
+    "plop": "2.6.0",
+    "prettier": "2.0.2",
+    "typescript": "3.8.3"
+  }
+}
