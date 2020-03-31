@@ -6,11 +6,11 @@
   "private": true,
   "scripts": {
     "start": "node .",
-    "refresh": "yarn cache clean && rm -rf node_modules && rm -f yarn.lock && yarn",
+    "refresh": "yarn cache clean && yarn install --force --no-lockfile",
     "test": "ava"
   },
   "dependencies": {
     "ava": "3.3.0",
-    "test-lib": "file:../test-lib.tgz"
+    "make-cli-tool": "file:../make-cli-tool.tgz"
   }
 }
