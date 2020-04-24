@@ -31,7 +31,7 @@ const devDependencies = [
   // * --
 ]
 
-module.exports = ({ toolName, cli }) => {
+module.exports = ({ toolName }) => {
   const rootPath = path.resolve(toolName)
 
   if (fs.existsSync(rootPath)) {
@@ -42,6 +42,7 @@ module.exports = ({ toolName, cli }) => {
       )}`,
     )
     console.log()
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(1)
   }
 

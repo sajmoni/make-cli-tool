@@ -48,7 +48,7 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 `make-cli-tool` will do the following:
 
- - Create a new folder called `<tool-naamae>`
+ - Create a new folder called `<tool-name>`
  - Copy all template files to that folder
  - Install the dependencies
  - Make an initial commit

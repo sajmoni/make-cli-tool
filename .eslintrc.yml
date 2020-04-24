@@ -1,5 +1,0 @@
-extends: 
-  - prettier
-  - plugin:ava/recommended
-rules:
-  no-use-before-define: off

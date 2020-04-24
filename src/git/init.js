@@ -8,8 +8,8 @@ module.exports = () => {
     console.log()
 
     return true
-  } catch (e) {
-    console.warn('  Git repo not initialized', e)
+  } catch (error) {
+    console.warn('  Git repo not initialized', error)
 
     return false
   }

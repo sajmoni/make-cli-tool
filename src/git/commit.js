@@ -11,9 +11,9 @@ module.exports = ({ rootPath }) => {
 
     console.log()
     console.log('  Created git commit')
-  } catch (e) {
+  } catch (error) {
     console.log()
-    console.log(chalk.red('  Could not create commit'), e.message)
+    console.log(chalk.red('  Could not create commit'), error.message)
 
     // TODO: Should this be kept?
     // * It was not possible to commit.
@@ -21,7 +21,7 @@ module.exports = ({ rootPath }) => {
     // * Remove the Git files to avoid a half-done state.
     try {
       fs.removeSync(path.join(rootPath, '.git'))
-    } catch (removeErr) {
+    } catch (_) {
       // Ignore.
     }
   }

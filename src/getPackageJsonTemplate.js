@@ -9,7 +9,6 @@ module.exports = ({ toolName }) => {
       build: 'rm -rf dist && parcel build src/index.js --no-cache',
       test: 'ava',
       lint: 'eslint src',
-      // eslint-disable-next-line quotes
       format: 'prettier --write "src/**/*.js"',
       // TODO: Revise
       typecheck: 'tsc src/*.js',
