@@ -155,14 +155,13 @@ https://help.github.com/en/github/building-a-strong-community/about-issue-and-pu
 
 ### Commands
 
-| Command           | Description                                    |
-| ----------------- | ---------------------------------------------- |
-| `yarn build`      | Generate files in the `dist` folder            |
-| `yarn release`    | Start the process to release a new version     |
-| `yarn tsc`        | Run a type check with `typescript`             |
-| `yarn xo`         | Lint with `xo`                                 |
-| `yarn clean`      | Remove build artefact (`.tgz` file)            |
-| `yarn build-test` | Builds, packs and installs to `example` folder |
+| Command        | Description                                    |
+| -------------- | ---------------------------------------------- |
+| `yarn build`   | Generate files in the `dist` folder            |
+| `yarn release` | Start the process to release a new version     |
+| `yarn qa`      | Run type check with `tsc` and lint with `xo`   |
+| `yarn clean`   | Remove build artefact (`.tgz` file)            |
+| `yarn go`      | Builds, packs and installs to `example` folder |
 
 ### Workflow
 

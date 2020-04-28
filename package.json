@@ -8,7 +8,8 @@
     "build": "rm -rf dist && rollup --config rollup.config.js",
     "release": "yarn clean && yarn build && np",
     "clean": "rm -rf ./example/test-tool && rm -f make-cli-tool.tgz",
-    "go": "./build-test.sh"
+    "go": "./build-test.sh",
+    "qa": "yarn tsc && yarn xo --fix"
   },
   "files": [
     "dist/"
@@ -49,18 +50,18 @@
   "devDependencies": {
     "@rollup/plugin-commonjs": "11.1.0",
     "@rollup/plugin-json": "4.0.3",
-    "husky": "4.2.3",
-    "lint-staged": "10.1.0",
-    "np": "6.2.0",
+    "husky": "4.2.5",
+    "lint-staged": "10.1.7",
+    "np": "6.2.3",
     "parcel": "2.0.0-alpha.3.2",
     "rollup": "2.7.3",
     "rollup-plugin-copy": "3.3.0",
     "typescript": "3.8.3",
-    "xo": "0.29.1"
+    "xo": "0.30.0"
   },
   "dependencies": {
-    "chalk": "3.0.0",
-    "commander": "5.0.0",
+    "chalk": "4.0.0",
+    "commander": "5.1.0",
     "execa": "4.0.0",
     "fs-extra": "9.0.0",
     "mustache": "4.0.1"
