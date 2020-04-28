@@ -2,13 +2,12 @@
   "name": "make-cli-tool",
   "license": "MIT",
   "version": "0.0.1",
-  "description": "A CLI tool to generate javascript libraries",
+  "description": "A CLI tool to generate other CLI tools",
   "keywords": [],
   "scripts": {
-    "build": "rm -rf dist && parcel build src/index.js --no-cache",
-    "plop": "plop",
+    "build": "rm -rf dist && rollup --config rollup.config.js",
     "release": "yarn clean && yarn build && np",
-    "clean": "rm -f make-cli-tool.tgz",
+    "clean": "rm -rf ./example/test-tool && rm -f make-cli-tool.tgz",
     "go": "./build-test.sh"
   },
   "files": [
@@ -17,7 +16,7 @@
   "directories": {
     "example": "example"
   },
-  "bin": "dist/index.js",
+  "bin": "dist/bundle.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/sajmoni/make-cli-tool.git"
@@ -27,8 +26,7 @@
     "semi": false,
     "singleQuote": true,
     "useTabs": false,
-    "bracketSpacing": true,
-    "parser": "typescript"
+    "bracketSpacing": true
   },
   "xo": {
     "prettier": true,
@@ -37,7 +35,7 @@
       "node"
     ],
     "rules": {
-      "import/no-absolute-path": "off",
+      "unicorn/no-process-exit": "off",
       "unicorn/filename-case": "off",
       "capitalized-comments": "off",
       "dot-notation": "off"
@@ -49,18 +47,21 @@
     }
   },
   "devDependencies": {
+    "@rollup/plugin-commonjs": "11.1.0",
+    "@rollup/plugin-json": "4.0.3",
     "husky": "4.2.3",
     "lint-staged": "10.1.0",
     "np": "6.2.0",
     "parcel": "2.0.0-alpha.3.2",
-    "plop": "2.6.0",
+    "rollup": "2.7.3",
+    "rollup-plugin-copy": "3.3.0",
     "typescript": "3.8.3",
     "xo": "0.29.1"
   },
   "dependencies": {
     "chalk": "3.0.0",
     "commander": "5.0.0",
-    "cross-spawn": "7.0.1",
+    "execa": "4.0.0",
     "fs-extra": "9.0.0",
     "mustache": "4.0.1"
   }

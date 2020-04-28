@@ -10,7 +10,7 @@ runCommand() {
 
 runCommand "yarn clean"
 runCommand "yarn build"
-runCommand "yarn pack --filename make-cli-tool.tgz"
+runCommand "yarn pack --filename {{ toolName }}.tgz"
 runCommand "cd example"
 runCommand "yarn refresh"
-runCommand "yarn make-cli-tool test-tool"
+runCommand "yarn {{ toolName }}"

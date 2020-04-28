@@ -14,27 +14,27 @@
 
 ## :sparkles: Features
 
- - :boat: [`yargs`](https://github.com/yargs/yargs) - Build cli tools
+- :boat: [`yargs`](https://github.com/yargs/yargs) - Build cli tools
 
- - :crayon: [`chalk`](https://github.com/chalk/chalk) - Colorize output
+- :crayon: [`chalk`](https://github.com/chalk/chalk) - Colorize output
 
- - :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Very fast, zero config, module bundler
+- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Very fast, zero config, module bundler
 
- - :arrow_up: [`np`](https://github.com/sindresorhus/np) - A better `npm publish`
+- :arrow_up: [`np`](https://github.com/sindresorhus/np) - A better `npm publish`
 
- - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
+- :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
- - :policeman: [`eslint`](https://github.com/eslint/eslint) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
+- :policeman: [`eslint`](https://github.com/eslint/eslint) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
 
- - :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatter
+- :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatter
 
- - :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
+- :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
 
- - :trophy: [`badgen`](https://github.com/badgen/badgen.net) - Readme badges
+- :trophy: [`badgen`](https://github.com/badgen/badgen.net) - Readme badges
 
- - :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
+- :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
 
- - Workflow to test your CLI tool locally before publishing
+- Workflow to test your CLI tool locally before publishing
 
 ---
 
@@ -48,10 +48,10 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 `make-cli-tool` will do the following:
 
- - Create a new folder called `<tool-name>`
- - Copy all template files to that folder
- - Install the dependencies
- - Make an initial commit
+- Create a new folder called `<tool-name>`
+- Copy all template files to that folder
+- Install the dependencies
+- Make an initial commit
 
 ### Before you start
 
@@ -116,9 +116,9 @@ yarn add make-cli-tool
 
 ## What to do after the script is run
 
- - Add a license: https://help.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository
+- Add a license: https://help.github.com/en/github/building-a-strong-community/adding-a-license-to-a-repository
 
- - Update the repository field in package.json:
+- Update the repository field in package.json:
 
 ```json
 "repository": {
@@ -129,13 +129,13 @@ yarn add make-cli-tool
 
 _This is required for `np` to be able to publish a changelog_
 
- - Set your repository URL
+- Set your repository URL
 
 ### You might also want to
 
- - Update the `keywords` section in `package.json`, this helps people find your package on `npm`.
+- Update the `keywords` section in `package.json`, this helps people find your package on `npm`.
 
- - Add or remove badges: https://badgen.net/
+- Add or remove badges: https://badgen.net/
 
 ---
 
@@ -155,14 +155,14 @@ https://help.github.com/en/github/building-a-strong-community/about-issue-and-pu
 
 ### Commands
 
-Command | Description
-------- | -----------
-`yarn build` | Generate files in the `dist` folder
-`yarn release` | Start the process to release a new version
-`yarn typecheck` | Run a type check with `typescript`
-`yarn lint` | Lint with `eslint`
-`yarn clean` | Remove build artefact (`.tgz` file)
-`yarn build-test` | Builds, packs and installs to `example` folder
+| Command           | Description                                    |
+| ----------------- | ---------------------------------------------- |
+| `yarn build`      | Generate files in the `dist` folder            |
+| `yarn release`    | Start the process to release a new version     |
+| `yarn tsc`        | Run a type check with `typescript`             |
+| `yarn xo`         | Lint with `xo`                                 |
+| `yarn clean`      | Remove build artefact (`.tgz` file)            |
+| `yarn build-test` | Builds, packs and installs to `example` folder |
 
 ### Workflow
 

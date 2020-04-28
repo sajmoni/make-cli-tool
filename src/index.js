@@ -1,5 +1,3 @@
-#!/usr/bin/env node
-
 const commander = require('commander')
 const chalk = require('chalk')
 
@@ -36,4 +34,4 @@ console.log()
 console.log(`  version: ${packageJson.version}`)
 console.log()
 
-makeCLITool({ toolName, cli: program.cli })
+makeCLITool({ toolName })
