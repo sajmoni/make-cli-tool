@@ -18,21 +18,19 @@
 
 - :crayon: [`chalk`](https://github.com/chalk/chalk) - Colorize output
 
-- :zap: [`parcel`](https://github.com/parcel-bundler/parcel) - Very fast, zero config, module bundler
+- :sushi: [`rollup`](https://github.com/rollup/rollup) - Next-generation ES module bundler
 
 - :arrow_up: [`np`](https://github.com/sindresorhus/np) - A better `npm publish`
 
 - :straight_ruler: [`ava`](https://github.com/avajs/ava) - Super simple test framework
 
-- :policeman: [`eslint`](https://github.com/eslint/eslint) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
+- :policeman: [`xo`](https://github.com/xojs/xo) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
 
 - :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatter
 
 - :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
 
 - :trophy: [`badgen`](https://github.com/badgen/badgen.net) - Readme badges
-
-- :recycle: [`plop`](https://github.com/plopjs/plop) - Micro-generator framework
 
 - Workflow to test your CLI tool locally before publishing
 
@@ -60,27 +58,25 @@ If you intend to publish this to `npm`, then you should check the availability o
 ### Example usage
 
 ```
-npx make-cli-tool my-cli-tool
+npx make-cli-tool my-tool
 ```
 
 The output file structure will look like this:
 
 ```
-my-cli-tool
+my-tool
 ├── .gitignore
-├── .eslintrc.yml
 ├── .npmrc
-├── README.md
+├── build-test.sh
+├── lint-staged.config.js
 ├── package.json
-├── plopfile.js
-├── docs/
+├── README.md
+├── rollup.config.js
+├── tsconfig.json
+├── yarn.lock
 ├── node_modules/
 ├── example/
-│   ├── index.js
 │   └── package.json
-├── plop/
-│   ├── docs.hbs
-│   └── test.hbs
 └── src/
     ├── index.js
     └── index.test.js
@@ -88,29 +84,13 @@ my-cli-tool
 
 ### Options
 
-`--use-ink`
+`--use-ink` (TODO)
 
 Include [`ink`](). `ink` is a way to write command line output using the popular web framework [`react`]()
 
-`--verbose`
+`--verbose` (TODO)
 
 Display full output. Useful when debugging.
-
----
-
-## :package: Install
-
-**npm**
-
-```
-npm install make-cli-tool
-```
-
-**yarn**
-
-```
-yarn add make-cli-tool
-```
 
 ---
 
