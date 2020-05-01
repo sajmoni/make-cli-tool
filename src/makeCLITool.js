@@ -87,7 +87,7 @@ module.exports = ({ toolName }) => {
         try {
           fs.copySync(templateDirectory, rootPath)
         } catch (error) {
-          throw new Error(`Could not copy template files: ')} ${error}`)
+          throw new Error(`Could not copy template files: ${error}`)
         }
 
         // * Rename gitignore to prevent npm from renaming it to .npmignore

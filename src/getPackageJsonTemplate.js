@@ -8,7 +8,6 @@ module.exports = ({ toolName }) => {
     scripts: {
       build: 'rm -rf dist && rollup --config rollup.config.js',
       test: 'ava',
-      plop: 'plop',
       release: 'yarn clean && yarn audit && yarn build && np',
       clean: `rm -f ${toolName}.tgz`,
       go: './build-test.sh',
