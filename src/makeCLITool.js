@@ -4,11 +4,9 @@ const fs = require('fs-extra')
 const os = require('os')
 const Mustache = require('mustache')
 const execa = require('execa')
+const Listr = require('listr')
 
 const displayDoneMessage = require('./message/done')
-
-const tryGitInit = require('./git/init')
-const tryGitCommit = require('./git/commit')
 
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
@@ -37,118 +35,158 @@ const devDependencies = [
 module.exports = ({ toolName }) => {
   const rootPath = path.resolve(toolName)
 
-  if (fs.existsSync(rootPath)) {
-    console.log()
-    console.log(
-      `${chalk.red('  Error: Project folder already exists')} ${chalk.cyan(
-        rootPath,
-      )}`,
-    )
-    console.log()
-    process.exit(1)
-  }
+  let initializedGit
 
-  console.log()
-  console.log(`  Creating a CLI tool in ${chalk.green(rootPath)}`)
+  console.log(` Creating a CLI tool in ${chalk.green(rootPath)}`)
   console.log()
 
-  fs.mkdirSync(rootPath)
+  const tasks = new Listr([
+    {
+      title: 'Create project folder',
+      task: () => {
+        if (fs.existsSync(rootPath)) {
+          throw new Error('Project folder already exists')
+        }
 
-  const packageJsonTemplate = getPackageJsonTemplate({ toolName })
+        fs.mkdirSync(rootPath)
+        const packageJsonTemplate = getPackageJsonTemplate({ toolName })
 
-  fs.writeFileSync(
-    path.join(rootPath, 'package.json'),
-    JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
-  )
-
-  try {
-    // * Change directory so that Husky gets installed in the right .git folder
-    process.chdir(rootPath)
-  } catch (_) {
-    console.log(
-      `${chalk.red(
-        '  Error: Could not change to project directory',
-      )} ${chalk.cyan(rootPath)}`,
-    )
-    process.exit(1)
-  }
-
-  const initializedGit = tryGitInit()
-
-  console.log()
-  console.log('  Copying files from template.')
-
-  const templateDirectory = `${__dirname}/template/folder`
-
-  try {
-    fs.copySync(templateDirectory, rootPath)
-  } catch (error) {
-    console.log(
-      `${chalk.red('  Error: Could not copy template files: ')} ${error}`,
-    )
-  }
-
-  // * Rename gitignore to prevent npm from renaming it to .npmignore
-  // * See: https://github.com/npm/npm/issues/1862
-  fs.copySync(
-    `${__dirname}/template/gitignore`,
-    path.join(rootPath, '.gitignore'),
-  )
-
-  const readmeTemplateString = fs
-    .readFileSync(`${__dirname}/template/README.template.md`)
-    .toString()
-  const readme = Mustache.render(readmeTemplateString, { toolName })
-  fs.writeFileSync(path.join(rootPath, 'README.md'), readme)
-
-  const buildFileName = 'build-test.sh'
-
-  const buildFileString = fs
-    .readFileSync(`${__dirname}/template/${buildFileName}`)
-    .toString()
-  const buildFile = Mustache.render(buildFileString, { toolName })
-  const buildPath = path.join(rootPath, 'build-test.sh')
-  fs.writeFileSync(buildPath, buildFile)
-  fs.chmodSync(buildPath, '755')
-
-  const exampleProjectPackageJson = {
-    name: 'example',
-    private: true,
-    scripts: {
-      refresh: 'yarn cache clean && yarn install --force --no-lockfile',
+        fs.writeFileSync(
+          path.join(rootPath, 'package.json'),
+          JSON.stringify(packageJsonTemplate, null, 2) + os.EOL,
+        )
+        return true
+      },
     },
-    dependencies: {
-      [toolName]: `file:../${toolName}.tgz`,
+    {
+      title: 'Git init',
+      exitOnError: false,
+      task: () => {
+        try {
+          // * Change directory so that Husky gets installed in the right .git folder
+          process.chdir(rootPath)
+        } catch (_) {
+          throw new Error(`Could not change to project directory: ${rootPath}`)
+        }
+
+        try {
+          execa.sync('git', ['init'])
+
+          initializedGit = true
+          return true
+        } catch (error) {
+          throw new Error(`Git repo not initialized ${error}`)
+        }
+      },
     },
-  }
+    {
+      title: 'Copy template files',
+      task: () => {
+        const templateDirectory = `${__dirname}/template/folder`
 
-  fs.mkdirSync(path.join(rootPath, 'example'))
-  fs.writeFileSync(
-    path.join(rootPath, 'example/package.json'),
-    JSON.stringify(exampleProjectPackageJson, null, 2) + os.EOL,
-  )
+        try {
+          fs.copySync(templateDirectory, rootPath)
+        } catch (error) {
+          throw new Error(`Could not copy template files: ')} ${error}`)
+        }
 
-  console.log('  Installing packages.')
-  console.log()
+        // * Rename gitignore to prevent npm from renaming it to .npmignore
+        // * See: https://github.com/npm/npm/issues/1862
+        fs.copySync(
+          `${__dirname}/template/gitignore`,
+          path.join(rootPath, '.gitignore'),
+        )
 
-  const command = 'yarn'
-  const defaultArgs = ['add', '--exact']
-  const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
-  const prodArgs = defaultArgs.concat(dependencies)
+        const readmeTemplateString = fs
+          .readFileSync(`${__dirname}/template/README.template.md`)
+          .toString()
+        const readme = Mustache.render(readmeTemplateString, { toolName })
+        fs.writeFileSync(path.join(rootPath, 'README.md'), readme)
 
-  execa(command, devArgs)
-    .then(() => execa(command, prodArgs))
+        const buildFileName = 'build-test.sh'
+
+        const buildFileString = fs
+          .readFileSync(`${__dirname}/template/${buildFileName}`)
+          .toString()
+        const buildFile = Mustache.render(buildFileString, { toolName })
+        const buildPath = path.join(rootPath, 'build-test.sh')
+        fs.writeFileSync(buildPath, buildFile)
+        fs.chmodSync(buildPath, '755')
+
+        const exampleProjectPackageJson = {
+          name: 'example',
+          private: true,
+          scripts: {
+            refresh: 'yarn cache clean && yarn install --force --no-lockfile',
+          },
+          dependencies: {
+            [toolName]: `file:../${toolName}.tgz`,
+          },
+        }
+
+        fs.mkdirSync(path.join(rootPath, 'example'))
+        fs.writeFileSync(
+          path.join(rootPath, 'example/package.json'),
+          JSON.stringify(exampleProjectPackageJson, null, 2) + os.EOL,
+        )
+
+        return true
+      },
+    },
+    {
+      title: 'Install dependencies',
+      task: () => {
+        const command = 'yarn'
+        const defaultArgs = ['add', '--exact']
+        const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
+        const prodArgs = defaultArgs.concat(dependencies)
+
+        return execa(command, devArgs)
+          .then(() => execa(command, prodArgs))
+          .catch((error) => {
+            throw new Error(`Could not install dependencies, ${error}`)
+          })
+      },
+    },
+    {
+      title: 'Git commit',
+      exitOnError: false,
+      skip: () => !initializedGit,
+      task: () => {
+        try {
+          execa.sync('git', ['add', '-A'])
+
+          execa.sync('git', [
+            'commit',
+            '--no-verify',
+            '-m',
+            'Initialize project using make-cli-tool',
+          ])
+          return true
+        } catch (error) {
+          // * It was not possible to commit.
+          // * Maybe the commit author config is not set.
+          // * Remove the Git files to avoid a half-done state.
+          try {
+            fs.removeSync(path.join(rootPath, '.git'))
+            throw new Error(`Could not create commit ${error}`)
+          } catch (_) {
+            throw new Error(`Could not create commit ${error}`)
+          }
+        }
+      },
+    },
+  ])
+
+  tasks
+    .run()
     .then(() => {
-      if (initializedGit) {
-        tryGitCommit({ rootPath })
-      }
-
       displayDoneMessage({ name: toolName, rootPath })
     })
-    .catch(() => {
-      // TODO: Add test case for this?
+    .catch((error) => {
       console.log()
-      console.log(chalk.red('  Aborting installation.'))
+      console.error(chalk.red(error))
       console.log()
+      process.exit(1)
     })
 }

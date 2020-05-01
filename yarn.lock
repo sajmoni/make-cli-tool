@@ -2434,6 +2434,14 @@ caseless@~0.12.0:
   resolved "https://registry.yarnpkg.com/caseless/-/caseless-0.12.0.tgz#1b681c21ff84033c826543090689420d187151dc"
   integrity sha1-G2gcIf+EAzyCZUMJBolCDRhxUdw=
 
+cfonts@2.8.1:
+  version "2.8.1"
+  resolved "https://registry.yarnpkg.com/cfonts/-/cfonts-2.8.1.tgz#10bd4e5c9f9de7543eb9a14b53f0ba139e2af5f2"
+  integrity sha512-+vql7UbJQJQYOGM4kOC/r7x6yjY9dXERy+DE2RXFCKepwC0dZTdZrBL23P4G09OwgeIo9u6uFxw0Y7BqsowyOQ==
+  dependencies:
+    chalk "^3.0.0"
+    window-size "^1.1.1"
+
 chalk@4.0.0, chalk@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-4.0.0.tgz#6e98081ed2d17faab615eb52ac66ec1fe6209e72"
@@ -5569,7 +5577,7 @@ listr-verbose-renderer@^0.5.0:
     date-fns "^1.27.2"
     figures "^2.0.0"
 
-listr@^0.14.3:
+listr@0.14.3, listr@^0.14.3:
   version "0.14.3"
   resolved "https://registry.yarnpkg.com/listr/-/listr-0.14.3.tgz#2fea909604e434be464c50bddba0d496928fa586"
   integrity sha512-RmAl7su35BFd/xoMamRjpIE4j3v+L28o8CT5YhAXQJm1fD+1l9ngXY8JAQRJ+tFK2i5njvi0iRUKV09vPwA0iA==
@@ -8928,6 +8936,14 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
+
+window-size@^1.1.1:
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/window-size/-/window-size-1.1.1.tgz#9858586580ada78ab26ecd6978a6e03115c1af20"
+  integrity sha512-5D/9vujkmVQ7pSmc0SCBmHXbkv6eaHwXEx65MywhmUMsI8sGqJ972APq1lotfcwMKPFLuCFfL8xGHLIp7jaBmA==
+  dependencies:
+    define-property "^1.0.0"
+    is-number "^3.0.0"
 
 word-wrap@~1.2.3:
   version "1.2.3"

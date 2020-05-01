@@ -19,6 +19,8 @@ export default {
     'mustache',
     'execa',
     'child_process',
+    'listr',
+    'cfonts',
   ],
   plugins: [
     commonjs(),

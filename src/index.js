@@ -1,5 +1,6 @@
 const commander = require('commander')
 const chalk = require('chalk')
+const CFonts = require('cfonts')
 
 const packageJson = require('../package.json')
 const displayNoToolNameMessage = require('./message/noToolName')
@@ -22,16 +23,19 @@ const program = new commander.Command(packageJson.name)
   .option('--use-ink', 'Use react for the command line')
   .parse(process.argv)
 
+// ! Cannot get to here currently since commander will finish before if name not present
 if (typeof toolName === 'undefined') {
   displayNoToolNameMessage({ program })
   process.exit(1)
 }
 
-// TODO: Make this output look nicer
 console.log()
-console.log(`  ${packageJson.name}`)
-console.log()
-console.log(`  version: ${packageJson.version}`)
+CFonts.say(`${packageJson.name}`, {
+  font: 'tiny',
+  colors: ['#f2a31b'],
+  space: false,
+})
+console.log(` v${packageJson.version}`)
 console.log()
 
 makeCLITool({ toolName })

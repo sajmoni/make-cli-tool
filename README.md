@@ -7,7 +7,7 @@
 
 <div align="center">
   <img src="https://badgen.net/npm/v/make-cli-tool?icon=npm" />
-  <img src="https://badgen.net/bundlephobia/minzip/make-cli-tool" />
+  <img src="https://badgen.net/github/last-commit/sajmoni/make-cli-tool?icon=github" />
 </div>
 
 ---
