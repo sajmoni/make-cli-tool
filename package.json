@@ -36,6 +36,9 @@
       "es2020",
       "node"
     ],
+    "ignores": [
+      "template"
+    ],
     "rules": {
       "unicorn/no-process-exit": "off",
       "unicorn/filename-case": "off",
