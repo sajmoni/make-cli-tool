@@ -17,7 +17,7 @@ const program = new commander.Command(packageJson.name)
   })
   .on('--help', () => {
     console.log()
-    console.log(`    Only ${chalk.green('<tool-name>')} is required.`)
+    console.log(`  Only ${chalk.green('<tool-name>')} is required.`)
     console.log()
   })
   .option('--use-ink', 'Use react for the command line')
@@ -38,4 +38,4 @@ CFonts.say(`${packageJson.name}`, {
 console.log(` v${packageJson.version}`)
 console.log()
 
-makeCLITool({ toolName })
+makeCLITool({ toolName, useInk: program.useInk })

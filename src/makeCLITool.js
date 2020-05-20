@@ -7,14 +7,11 @@ const execa = require('execa')
 const Listr = require('listr')
 
 const displayDoneMessage = require('./message/done')
-
+const createFileFromTemplate = require('./createFileFromTemplate')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
 const dependencies = ['yargs@15.1.0', 'chalk@3.0.0']
 
-// const inkDependencies = ['ink', 'react']
-
-// TODO: Output dependencies installed
 const devDependencies = [
   // * Code quality
   'xo@0.29.1',
@@ -32,7 +29,17 @@ const devDependencies = [
   // * --
 ]
 
-module.exports = ({ toolName }) => {
+const inkDependencies = ['ink@2.7.1', 'react@16.13.1']
+
+const inkDevDependencies = [
+  '@babel/core@7.9.6',
+  '@babel/preset-env@7.9.6',
+  '@babel/preset-react@7.9.4',
+  '@rollup/plugin-babel@5.0.0',
+  '@types/react',
+]
+
+module.exports = ({ toolName, useInk }) => {
   const rootPath = path.resolve(toolName)
 
   let initializedGit
@@ -49,7 +56,7 @@ module.exports = ({ toolName }) => {
         }
 
         fs.mkdirSync(rootPath)
-        const packageJsonTemplate = getPackageJsonTemplate({ toolName })
+        const packageJsonTemplate = getPackageJsonTemplate({ toolName, useInk })
 
         fs.writeFileSync(
           path.join(rootPath, 'package.json'),
@@ -113,6 +120,37 @@ module.exports = ({ toolName }) => {
         fs.writeFileSync(buildPath, buildFile)
         fs.chmodSync(buildPath, '755')
 
+        createFileFromTemplate({
+          source: 'index.template.js',
+          destination: 'src/index.js',
+          options: {
+            useInk,
+          },
+        })
+
+        createFileFromTemplate({
+          source: 'tsconfig.template.json',
+          destination: 'tsconfig.json',
+          options: {
+            useInk,
+          },
+        })
+
+        createFileFromTemplate({
+          source: 'rollup.config.template.js',
+          destination: 'rollup.config.js',
+          options: {
+            useInk,
+          },
+        })
+
+        if (useInk) {
+          fs.copySync(
+            `${__dirname}/template/App.js`,
+            path.join(rootPath, 'src/App.js'),
+          )
+        }
+
         const exampleProjectPackageJson = {
           name: 'example',
           private: true,
@@ -138,8 +176,13 @@ module.exports = ({ toolName }) => {
       task: () => {
         const command = 'yarn'
         const defaultArgs = ['add', '--exact']
-        const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
-        const prodArgs = defaultArgs.concat(dependencies)
+        let devArgs = defaultArgs.concat('--dev').concat(devDependencies)
+        let prodArgs = defaultArgs.concat(dependencies)
+
+        if (useInk) {
+          prodArgs = prodArgs.concat(inkDependencies)
+          devArgs = devArgs.concat(inkDevDependencies)
+        }
 
         return execa(command, devArgs)
           .then(() => execa(command, prodArgs))

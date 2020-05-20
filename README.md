@@ -34,6 +34,12 @@
 
 - Workflow to test your CLI tool locally before publishing
 
+### Included with the `--use-ink` flag
+
+- :octopus: [ink](https://github.com/vadimdemedes/ink) - React for command-line apps
+
+- :atom: [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces
+
 ---
 
 ## :wrench: Usage
@@ -53,7 +59,11 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 ### Before you start
 
-If you intend to publish this to `npm`, then you should check the availability of your name with [`npm-name-cli`](https://github.com/sindresorhus/npm-name-cli): `npx npm-name-cli <library-name>`
+If you intend to publish this to `npm`, then you should check the availability of your name with [`npm-name-cli`](https://github.com/sindresorhus/npm-name-cli):
+
+```sh
+npx npm-name-cli <tool-name>
+```
 
 ### Example usage
 
@@ -84,13 +94,13 @@ my-tool
 
 ### Options
 
-`--use-ink` (TODO)
+`--use-ink`
 
-Include [`ink`](). `ink` is a way to write command line output using the popular web framework [`react`]()
+Include `ink`. `ink` is a way to write command line output using the popular ui library `react`.
 
-`--verbose` (TODO)
+<!-- `--verbose` (TODO)
 
-Display full output. Useful when debugging.
+Display full output. Useful when debugging. -->
 
 ---
 
@@ -119,7 +129,7 @@ _This is required for `np` to be able to publish a changelog_
 
 ---
 
-## Things you might want to do if your library becomes popular
+## Things you might want to do if your tool becomes popular
 
 ### Documentation
 
@@ -146,10 +156,9 @@ https://help.github.com/en/github/building-a-strong-community/about-issue-and-pu
 ### Workflow
 
 1. Make changes
-2. `yarn build-test` and verify that your changes work.
+2. `yarn go` and verify that your changes work.
 3. Commit to `master` or make `PR`
 
 #### Release
 
-1. `yarn release:prepare` - Sets up your library for release
-2. If everything worked in the previous step: `yarn release`
+`yarn release`

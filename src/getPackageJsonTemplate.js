@@ -1,4 +1,4 @@
-module.exports = ({ toolName }) => {
+module.exports = ({ toolName, useInk }) => {
   const packageJsonTemplate = {
     name: toolName,
     license: 'MIT',
@@ -43,6 +43,22 @@ module.exports = ({ toolName }) => {
         'dot-notation': 'off',
       },
     },
+  }
+
+  if (useInk) {
+    packageJsonTemplate.babel = {
+      presets: [
+        '@babel/preset-react',
+        [
+          '@babel/preset-env',
+          {
+            targets: {
+              node: true,
+            },
+          },
+        ],
+      ],
+    }
   }
 
   return packageJsonTemplate

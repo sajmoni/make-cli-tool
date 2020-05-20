@@ -5,6 +5,9 @@
     "noEmit": true,
     "target": "ES2017",
     "module": "commonjs",
+    {{ #useInk }}
+    "jsx": "react",
+    {{ /useInk }}
     "strict": false,
     "esModuleInterop": true,
     "resolveJsonModule": true,

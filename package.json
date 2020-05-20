@@ -6,8 +6,8 @@
   "keywords": [],
   "scripts": {
     "build": "rm -rf dist && rollup --config rollup.config.js",
-    "release": "yarn clean && yarn build && np",
-    "clean": "rm -rf ./example/test-tool && rm -f make-cli-tool.tgz",
+    "release": "yarn clean && yarn qa && yarn audit && yarn build && np",
+    "clean": "rm -rf ./example/test-tool && rm -rf ./example/ink-tool && rm -f make-cli-tool.tgz",
     "go": "./build-test.sh",
     "all": "./test-all.sh",
     "qa": "yarn tsc && yarn xo --fix"
@@ -52,19 +52,19 @@
     "@rollup/plugin-commonjs": "11.1.0",
     "@rollup/plugin-json": "4.0.3",
     "husky": "4.2.5",
-    "lint-staged": "10.2.2",
+    "lint-staged": "10.2.4",
     "np": "6.2.3",
     "parcel": "2.0.0-alpha.3.2",
-    "rollup": "2.7.6",
+    "rollup": "2.10.5",
     "rollup-plugin-copy": "3.3.0",
-    "typescript": "3.8.3",
+    "typescript": "3.9.3",
     "xo": "0.30.0"
   },
   "dependencies": {
-    "cfonts": "2.8.1",
+    "cfonts": "2.8.2",
     "chalk": "4.0.0",
     "commander": "5.1.0",
-    "execa": "4.0.0",
+    "execa": "4.0.1",
     "fs-extra": "9.0.0",
     "listr": "0.14.3",
     "mustache": "4.0.1"

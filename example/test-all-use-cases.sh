@@ -14,3 +14,7 @@ echo "=== Error: No name provided ==="
 echo ""
 yarn make-cli-tool
 echo ""
+echo "=== --use-ink ==="
+echo ""
+yarn make-cli-tool ink-tool --use-ink
+echo ""
