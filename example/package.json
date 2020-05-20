@@ -5,12 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node .",
-    "refresh": "yarn cache clean && yarn install --force --no-lockfile",
-    "test": "ava"
+    "refresh": "yarn cache clean && yarn install --force --no-lockfile"
   },
   "dependencies": {
-    "ava": "3.3.0",
     "make-cli-tool": "file:../make-cli-tool.tgz"
   }
 }
