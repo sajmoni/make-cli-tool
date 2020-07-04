@@ -3,6 +3,8 @@ import json from '@rollup/plugin-json'
 import copy from 'rollup-plugin-copy'
 
 const OUTPUT_FOLDER = 'dist'
+
+// eslint-disable-next-line import/no-anonymous-default-export
 export default {
   input: 'src/index.js',
   output: {

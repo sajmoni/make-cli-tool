@@ -10,33 +10,33 @@ const displayDoneMessage = require('./message/done')
 const createFileFromTemplate = require('./createFileFromTemplate')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
-const dependencies = ['yargs@15.1.0', 'chalk@3.0.0']
+const dependencies = ['yargs@15.4.0', 'chalk@4.1.0']
 
 const devDependencies = [
   // * Code quality
-  'xo@0.29.1',
-  'typescript@3.8.3',
-  'husky@4.2.3',
-  'lint-staged@10.1.0',
+  'xo@0.32.1',
+  'typescript@3.9.6',
+  'husky@4.2.5',
+  'lint-staged@10.2.11',
   // * --
   // * Testing
-  'ava@3.5.2',
+  'ava@3.9.0',
   // * --
   // * Other
-  'rollup@2.7.2',
-  '@rollup/plugin-commonjs@11.1.0',
-  'np@6.2.0',
+  'rollup@2.18.2',
+  '@rollup/plugin-commonjs@13.0.0',
+  'np@6.2.5',
   // * --
 ]
 
-const inkDependencies = ['ink@2.7.1', 'react@16.13.1']
+const inkDependencies = ['ink@next', 'react@16.13.1']
 
 const inkDevDependencies = [
-  '@babel/core@7.9.6',
-  '@babel/preset-env@7.9.6',
-  '@babel/preset-react@7.9.4',
-  '@rollup/plugin-babel@5.0.0',
-  '@types/react',
+  '@babel/core@7.10.4',
+  '@babel/preset-env@7.10.4',
+  '@babel/preset-react@7.10.4',
+  '@rollup/plugin-babel@5.0.4',
+  '@types/react@16.9.41',
 ]
 
 module.exports = ({ toolName, useInk }) => {
@@ -72,7 +72,7 @@ module.exports = ({ toolName, useInk }) => {
         try {
           // * Change directory so that Husky gets installed in the right .git folder
           process.chdir(rootPath)
-        } catch (_) {
+        } catch {
           throw new Error(`Could not change to project directory: ${rootPath}`)
         }
 
@@ -89,7 +89,7 @@ module.exports = ({ toolName, useInk }) => {
     {
       title: 'Copy template files',
       task: () => {
-        const templateDirectory = `${__dirname}/template/folder`
+        const templateDirectory = path.join(__dirname, 'template/folder')
 
         try {
           fs.copySync(templateDirectory, rootPath)
@@ -100,12 +100,12 @@ module.exports = ({ toolName, useInk }) => {
         // * Rename gitignore to prevent npm from renaming it to .npmignore
         // * See: https://github.com/npm/npm/issues/1862
         fs.copySync(
-          `${__dirname}/template/gitignore`,
+          path.join(__dirname, 'template/gitignore'),
           path.join(rootPath, '.gitignore'),
         )
 
         const readmeTemplateString = fs
-          .readFileSync(`${__dirname}/template/README.template.md`)
+          .readFileSync(path.join(__dirname, `template/README.template.md`))
           .toString()
         const readme = Mustache.render(readmeTemplateString, { toolName })
         fs.writeFileSync(path.join(rootPath, 'README.md'), readme)
@@ -113,7 +113,7 @@ module.exports = ({ toolName, useInk }) => {
         const buildFileName = 'build-test.sh'
 
         const buildFileString = fs
-          .readFileSync(`${__dirname}/template/${buildFileName}`)
+          .readFileSync(path.join(__dirname, `template/${buildFileName}`))
           .toString()
         const buildFile = Mustache.render(buildFileString, { toolName })
         const buildPath = path.join(rootPath, 'build-test.sh')
@@ -146,7 +146,7 @@ module.exports = ({ toolName, useInk }) => {
 
         if (useInk) {
           fs.copySync(
-            `${__dirname}/template/App.js`,
+            path.join(__dirname, 'template/App.js'),
             path.join(rootPath, 'src/App.js'),
           )
         }
@@ -213,7 +213,7 @@ module.exports = ({ toolName, useInk }) => {
           try {
             fs.removeSync(path.join(rootPath, '.git'))
             throw new Error(`Could not create commit ${error}`)
-          } catch (_) {
+          } catch {
             throw new Error(`Could not create commit ${error}`)
           }
         }

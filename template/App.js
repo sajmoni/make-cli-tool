@@ -1,8 +1,12 @@
 import React from 'react'
-import { Box } from 'ink'
+import { Box, Text } from 'ink'
 
 const App = () => {
-  return <Box>{` Hello from react!`}</Box>
+  return (
+    <Box>
+      <Text>{` Hello from react!`}</Text>
+    </Box>
+  )
 }
 
 export default App
