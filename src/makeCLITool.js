@@ -29,7 +29,13 @@ const devDependencies = [
   // * --
 ]
 
-const inkDependencies = ['ink@next', 'react@16.13.1']
+const inkDependencies = [
+  'ink@next',
+  'react@16.13.1',
+  'eslint-config-xo-react@0.23.0',
+  'eslint-plugin-react@7.20.3',
+  'eslint-plugin-react-hooks@4.0.5',
+]
 
 const inkDevDependencies = [
   '@babel/core@7.10.4',

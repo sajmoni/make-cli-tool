@@ -59,6 +59,10 @@ module.exports = ({ toolName, useInk }) => {
         ],
       ],
     }
+    packageJsonTemplate.xo = {
+      ...packageJsonTemplate.xo,
+      extends: 'xo-react',
+    }
   }
 
   return packageJsonTemplate
