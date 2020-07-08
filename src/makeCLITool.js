@@ -21,6 +21,10 @@ const devDependencies = [
   // * --
   // * Testing
   'ava@3.9.0',
+  '@babel/register@7.9.0',
+  '@babel/core@7.10.4',
+  '@babel/preset-env@7.10.4',
+  '@babel/preset-typescript@7.9.0',
   // * --
   // * Other
   'rollup@2.18.2',
@@ -38,8 +42,6 @@ const inkDependencies = [
 ]
 
 const inkDevDependencies = [
-  '@babel/core@7.10.4',
-  '@babel/preset-env@7.10.4',
   '@babel/preset-react@7.10.4',
   '@rollup/plugin-babel@5.0.4',
   '@types/react@16.9.41',
