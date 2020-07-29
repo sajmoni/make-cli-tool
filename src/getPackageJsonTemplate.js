@@ -11,6 +11,7 @@ module.exports = ({ toolName, useInk }) => {
       release: 'yarn clean && yarn audit && yarn build && np',
       clean: `rm -f ${toolName}.tgz`,
       go: './build-test.sh',
+      qa: 'tsc && xo --fix',
     },
     bin: 'dist/bundle.js',
     files: ['dist/'],
@@ -19,6 +20,7 @@ module.exports = ({ toolName, useInk }) => {
     },
     ava: {
       require: ['./script/setupTests.js'],
+      extensions: ['js', 'ts'],
     },
     prettier: {
       trailingComma: 'all',

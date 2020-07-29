@@ -5,6 +5,7 @@
   "description": "A CLI tool to generate other CLI tools",
   "keywords": [],
   "scripts": {
+    "version": "yarn build",
     "build": "rm -rf dist && rollup --config rollup.config.js",
     "release": "yarn clean && yarn qa && yarn audit && yarn build && np",
     "clean": "rm -rf ./example/test-tool && rm -rf ./example/ink-tool && rm -f make-cli-tool.tgz",

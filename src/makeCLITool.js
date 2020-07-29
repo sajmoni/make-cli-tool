@@ -10,40 +10,37 @@ const displayDoneMessage = require('./message/done')
 const createFileFromTemplate = require('./createFileFromTemplate')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
-const dependencies = ['yargs@15.4.0', 'chalk@4.1.0']
+const dependencies = ['yargs@15.4.1', 'chalk@4.1.0']
 
 const devDependencies = [
   // * Code quality
   'xo@0.32.1',
-  'typescript@3.9.6',
+  'typescript@3.9.7',
   'husky@4.2.5',
   'lint-staged@10.2.11',
   // * --
   // * Testing
-  'ava@3.9.0',
-  '@babel/register@7.9.0',
-  '@babel/core@7.10.4',
+  'ava@3.11.0',
+  '@babel/register@7.10.5',
+  '@babel/core@7.10.5',
   '@babel/preset-env@7.10.4',
-  '@babel/preset-typescript@7.9.0',
+  '@babel/preset-typescript@7.10.4',
   // * --
   // * Other
-  'rollup@2.18.2',
+  'rollup@2.23.0',
   '@rollup/plugin-commonjs@13.0.0',
-  'np@6.2.5',
+  'np@6.3.2',
   // * --
 ]
 
-const inkDependencies = [
-  'ink@next',
-  'react@16.13.1',
+const inkDependencies = ['ink@3.0.0', 'react@16.13.1']
+
+const inkDevDependencies = [
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.20.3',
   'eslint-plugin-react-hooks@4.0.5',
-]
-
-const inkDevDependencies = [
   '@babel/preset-react@7.10.4',
-  '@rollup/plugin-babel@5.0.4',
+  '@rollup/plugin-babel@5.1.0',
   '@types/react@16.9.41',
 ]
 
