@@ -53,21 +53,21 @@
     }
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "13.0.0",
+    "@rollup/plugin-commonjs": "14.0.0",
     "@rollup/plugin-json": "4.1.0",
     "husky": "4.2.5",
     "lint-staged": "10.2.11",
-    "np": "6.2.5",
-    "rollup": "2.18.2",
+    "np": "6.3.2",
+    "rollup": "2.23.0",
     "rollup-plugin-copy": "3.3.0",
-    "typescript": "3.9.6",
+    "typescript": "3.9.7",
     "xo": "0.32.1"
   },
   "dependencies": {
-    "cfonts": "2.8.5",
+    "cfonts": "2.8.6",
     "chalk": "4.1.0",
-    "commander": "5.1.0",
-    "execa": "4.0.2",
+    "commander": "6.0.0",
+    "execa": "4.0.3",
     "fs-extra": "9.0.1",
     "listr": "0.14.3",
     "mustache": "4.0.1"
