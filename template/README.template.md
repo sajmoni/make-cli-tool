@@ -7,7 +7,7 @@
 
 <div align="center">
   <img src="https://badgen.net/npm/v/{{ toolName }}?icon=npm" />
-  <img src="https://badgen.net/bundlephobia/minzip/{{ toolName }}" />
+  <!-- <img src="https://badgen.net/github/last-commit/<your user name>/{{ toolName }}?icon=github" /> -->
 </div>
 
 Add a short introduction here.

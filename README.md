@@ -26,8 +26,6 @@
 
 - :policeman: [`xo`](https://github.com/xojs/xo) and [`tsc`](https://github.com/microsoft/TypeScript) - Ensure code quality
 
-- :nail_care: [`prettier`](https://github.com/prettier/prettier) - Code formatter
-
 - :no_entry_sign: :poop: [`lint-staged`](https://github.com/okonet/lint-staged) + :dog: [`husky`](https://github.com/typicode/husky) - Ensure code quality on each git commit and push
 
 - :trophy: [`badgen`](https://github.com/badgen/badgen.net) - Readme badges
