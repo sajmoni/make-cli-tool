@@ -7,7 +7,7 @@
   "scripts": {
     "version": "yarn build",
     "build": "rm -rf dist && rollup --config rollup.config.js",
-    "release": "yarn clean && yarn qa && yarn audit && yarn build && np",
+    "release": "yarn clean && yarn qa && yarn audit && yarn build && np --no-tests",
     "clean": "rm -rf ./example/test-tool && rm -rf ./example/ink-tool && rm -f make-cli-tool.tgz",
     "go": "./build-test.sh",
     "all": "./test-all.sh",
