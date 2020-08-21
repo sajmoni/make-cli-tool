@@ -1,10 +1,14 @@
 import React from 'react'
 import { Box, Text } from 'ink'
 
-const App = () => {
+type AppProps = {
+  name?: string
+}
+
+const App: React.FC<AppProps> = ({ name = 'stranger' }) => {
   return (
     <Box>
-      <Text>{` Hello from react!`}</Text>
+      <Text>{` Hello ${name} from React!`}</Text>
     </Box>
   )
 }

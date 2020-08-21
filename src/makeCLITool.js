@@ -36,6 +36,7 @@ const devDependencies = [
 const inkDependencies = ['ink@3.0.4', 'react@16.13.1']
 
 const inkDevDependencies = [
+  'ink-testing-library@2.0.1',
   'eslint-config-xo-react@0.23.0',
   'eslint-plugin-react@7.20.6',
   'eslint-plugin-react-hooks@4.1.0',

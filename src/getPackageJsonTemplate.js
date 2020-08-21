@@ -20,7 +20,7 @@ module.exports = ({ toolName, useInk }) => {
     },
     ava: {
       require: ['./script/setupTests.js'],
-      extensions: ['js', 'ts'],
+      extensions: ['js', 'ts', 'tsx'],
     },
     prettier: {
       trailingComma: 'all',
@@ -51,6 +51,7 @@ module.exports = ({ toolName, useInk }) => {
     packageJsonTemplate.babel = {
       presets: [
         '@babel/preset-react',
+        '@babel/preset-typescript',
         [
           '@babel/preset-env',
           {
