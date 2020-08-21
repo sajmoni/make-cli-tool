@@ -14,34 +14,34 @@ const dependencies = ['yargs@15.4.1', 'chalk@4.1.0']
 
 const devDependencies = [
   // * Code quality
-  'xo@0.32.1',
-  'typescript@3.9.7',
+  'xo@0.33.0',
+  'typescript@4.0.2',
+  'tslib@2.0.1',
   'husky@4.2.5',
   'lint-staged@10.2.11',
   // * --
   // * Testing
-  'ava@3.11.0',
+  'ava@3.11.1',
   '@babel/register@7.10.5',
-  '@babel/core@7.10.5',
-  '@babel/preset-env@7.10.4',
+  '@babel/core@7.11.4',
+  '@babel/preset-env@7.11.0',
   '@babel/preset-typescript@7.10.4',
   // * --
   // * Other
   'rollup@2.23.0',
-  '@rollup/plugin-commonjs@13.0.0',
-  'np@6.3.2',
+  'np@6.4.0',
   // * --
 ]
 
-const inkDependencies = ['ink@3.0.0', 'react@16.13.1']
+const inkDependencies = ['ink@3.0.4', 'react@16.13.1']
 
 const inkDevDependencies = [
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.20.3',
-  'eslint-plugin-react-hooks@4.0.5',
+  'eslint-plugin-react@7.20.6',
+  'eslint-plugin-react-hooks@4.1.0',
   '@babel/preset-react@7.10.4',
-  '@rollup/plugin-babel@5.1.0',
-  '@types/react@16.9.41',
+  '@types/react@16.9.46',
+  '@rollup/plugin-typescript',
 ]
 
 module.exports = ({ toolName, useInk }) => {
@@ -127,7 +127,8 @@ module.exports = ({ toolName, useInk }) => {
 
         createFileFromTemplate({
           source: 'index.template.js',
-          destination: 'src/index.js',
+          // TODO: Handle non ink case
+          destination: 'src/index.tsx',
           options: {
             useInk,
           },
@@ -151,8 +152,8 @@ module.exports = ({ toolName, useInk }) => {
 
         if (useInk) {
           fs.copySync(
-            path.join(__dirname, 'template/App.js'),
-            path.join(rootPath, 'src/App.js'),
+            path.join(__dirname, 'template/App.tsx'),
+            path.join(rootPath, 'src/App.tsx'),
           )
         }
 

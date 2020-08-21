@@ -1,18 +1,16 @@
-import commonjs from '@rollup/plugin-commonjs'
 {{ #useInk }}
-import babel from '@rollup/plugin-babel'
+import typescript from '@rollup/plugin-typescript'
 {{ /useInk }}
-
-const OUTPUT_FOLDER = 'dist'
 
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
-  input: 'src/index.js',
+  // TODO: Handle non ink input (different templates)
+  input: 'src/index.tsx',
   output: {
     banner: '#!/usr/bin/env node',
-    file: `${OUTPUT_FOLDER}/bundle.js`,
+    dir: 'dist',
     format: 'cjs',
   },
   external: ['yargs', 'chalk'{{ #useInk }}, 'react', 'ink'{{ /useInk }}],
-  plugins: [{{ #useInk }}babel({ babelHelpers: 'bundled' }), {{ /useInk }}commonjs()],
+  plugins: [{{ #useInk }}typescript(){{ /useInk }}],
 }

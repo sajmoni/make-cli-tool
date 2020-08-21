@@ -13,7 +13,7 @@ module.exports = ({ toolName, useInk }) => {
       go: './build-test.sh',
       qa: 'tsc && xo --fix',
     },
-    bin: 'dist/bundle.js',
+    bin: 'dist/index.js',
     files: ['dist/'],
     directories: {
       example: 'example',
