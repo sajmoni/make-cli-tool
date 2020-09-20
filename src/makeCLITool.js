@@ -30,6 +30,7 @@ const devDependencies = [
   // * Other
   'rollup@2.23.0',
   'np@6.4.0',
+  'chokidar-cli@2.1.0',
   // * --
 ]
 

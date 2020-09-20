@@ -38,6 +38,7 @@ _Usage with `npx` ensures that you are always using the latest version_
 
 | Command        | Description                                    |
 | -------------- | ---------------------------------------------- |
+| `yarn start`   | Continuously builds and runs the tool          |
 | `yarn build`   | Generate files in the `dist` folder            |
 | `yarn release` | Start the process to release a new version     |
 | `yarn tsc`     | Run a type check with `typescript`             |
