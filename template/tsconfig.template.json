@@ -2,7 +2,8 @@
   "compilerOptions": {
     {{ #useInk }}
     "jsx": "react",
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
     {{ /useInk }}
+    "moduleResolution": "node"
   }
 }

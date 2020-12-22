@@ -10,40 +10,41 @@ const displayDoneMessage = require('./message/done')
 const createFileFromTemplate = require('./createFileFromTemplate')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
-const dependencies = ['yargs@15.4.1', 'chalk@4.1.0']
+const dependencies = ['yargs@16.0.2', 'chalk@4.1.0']
 
 const devDependencies = [
   // * Code quality
-  'xo@0.33.0',
-  'typescript@4.0.2',
-  'tslib@2.0.1',
-  'husky@4.2.5',
-  'lint-staged@10.2.11',
+  'xo@0.36.1',
+  'typescript@4.1.3',
+  'tslib@2.0.3',
+  'husky@4.3.6',
+  'lint-staged@10.5.3',
   // * --
   // * Testing
-  'ava@3.11.1',
-  '@babel/register@7.10.5',
-  '@babel/core@7.11.4',
-  '@babel/preset-env@7.11.0',
-  '@babel/preset-typescript@7.10.4',
+  'ava@3.14.0',
+  '@babel/register@7.12.10',
+  '@babel/core@7.12.10',
+  '@babel/preset-env@7.12.11',
+  '@babel/preset-typescript@7.12.7',
   // * --
   // * Other
-  'rollup@2.23.0',
-  'np@6.4.0',
+  'rollup@2.35.1',
+  'np@7.0.0',
   'chokidar-cli@2.1.0',
+  '@types/yargs@15.0.12',
   // * --
 ]
 
-const inkDependencies = ['ink@3.0.4', 'react@16.13.1']
+const inkDependencies = ['ink@3.0.8', 'react@17.0.1']
 
 const inkDevDependencies = [
-  'ink-testing-library@2.0.1',
+  'ink-testing-library@2.1.0',
   'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.20.6',
-  'eslint-plugin-react-hooks@4.1.0',
-  '@babel/preset-react@7.10.4',
-  '@types/react@16.9.46',
-  '@rollup/plugin-typescript',
+  'eslint-plugin-react@7.21.5',
+  'eslint-plugin-react-hooks@4.2.0',
+  '@babel/preset-react@7.12.10',
+  '@types/react@17.0.0',
+  '@rollup/plugin-typescript@8.1.0',
 ]
 
 module.exports = ({ toolName, useInk }) => {
