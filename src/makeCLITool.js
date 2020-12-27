@@ -10,7 +10,7 @@ const displayDoneMessage = require('./message/done')
 const createFileFromTemplate = require('./createFileFromTemplate')
 const getPackageJsonTemplate = require('./getPackageJsonTemplate.js')
 
-const dependencies = ['yargs@16.0.2', 'chalk@4.1.0']
+const dependencies = ['yargs@16.2.0', 'chalk@4.1.0']
 
 const devDependencies = [
   // * Code quality
@@ -28,7 +28,7 @@ const devDependencies = [
   '@babel/preset-typescript@7.12.7',
   // * --
   // * Other
-  'rollup@2.35.1',
+  'esbuild@0.8.26',
   'np@7.0.0',
   'chokidar-cli@2.1.0',
   '@types/yargs@15.0.12',
@@ -44,7 +44,6 @@ const inkDevDependencies = [
   'eslint-plugin-react-hooks@4.2.0',
   '@babel/preset-react@7.12.10',
   '@types/react@17.0.0',
-  '@rollup/plugin-typescript@8.1.0',
 ]
 
 module.exports = ({ toolName, useInk }) => {
@@ -140,14 +139,6 @@ module.exports = ({ toolName, useInk }) => {
         createFileFromTemplate({
           source: 'tsconfig.template.json',
           destination: 'tsconfig.json',
-          options: {
-            useInk,
-          },
-        })
-
-        createFileFromTemplate({
-          source: 'rollup.config.template.js',
-          destination: 'rollup.config.js',
           options: {
             useInk,
           },

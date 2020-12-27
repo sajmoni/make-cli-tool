@@ -6,7 +6,7 @@ module.exports = ({ toolName, useInk }) => {
     description: '',
     keywords: [],
     scripts: {
-      build: 'rm -rf dist && rollup --config rollup.config.js',
+      build: 'node build.js',
       test: 'ava',
       release: 'yarn clean && yarn audit && yarn build && np',
       clean: `rm -f ${toolName}.tgz`,
