@@ -11,7 +11,7 @@ module.exports = ({ toolName, useInk }) => {
       release: 'yarn clean && yarn audit && yarn build && np',
       clean: `rm -f ${toolName}.tgz`,
       start:
-        'chokidar "src" -c "node serve.js && node dist/index.js" --initial',
+        'chokidar "src" -c "node serve.js && node dist/index.js" --initial --silent',
       go: './build-test.sh',
       qa: 'tsc && xo --fix',
     },

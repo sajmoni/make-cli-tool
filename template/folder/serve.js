@@ -8,6 +8,7 @@ const buildOptions = {
   banner: '#!/usr/bin/env node',
   external: [],
   platform: 'node',
+  logLevel: 'error'
 }
 
 const run = async () => {
