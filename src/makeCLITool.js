@@ -29,7 +29,7 @@ const devDependencies = [
   // * --
   // * Other
   'esbuild@0.8.26',
-  'np@7.0.0',
+  'np@7.1.0',
   'chokidar-cli@2.1.0',
   '@types/yargs@15.0.12',
   // * --
