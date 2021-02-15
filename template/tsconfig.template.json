@@ -4,6 +4,9 @@
     "jsx": "react",
     "allowSyntheticDefaultImports": true,
     {{ /useInk }}
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "strict": true,
+    "resolveJsonModule": true
   }
 }
