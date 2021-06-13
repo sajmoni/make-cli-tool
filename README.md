@@ -14,11 +14,11 @@
 
 ## :sparkles: Features
 
-- :boat: [`yargs`](https://github.com/yargs/yargs) - Build cli tools
+- :boat: [`yargs`](https://github.com/yargs/yargs)
 
 - :crayon: [`chalk`](https://github.com/chalk/chalk) - Colorize output
 
-- :sushi: [`rollup`](https://github.com/rollup/rollup) - Next-generation ES module bundler
+- :sushi: [`rollup`](https://github.com/rollup/rollup) - Bundler
 
 - :arrow_up: [`np`](https://github.com/sindresorhus/np) - A better `npm publish`
 
@@ -31,12 +31,6 @@
 - :trophy: [`badgen`](https://github.com/badgen/badgen.net) - Readme badges
 
 - Workflow to test your CLI tool locally before publishing
-
-### Included with the `--use-ink` flag
-
-- :octopus: [ink](https://github.com/vadimdemedes/ink) - React for command-line apps
-
-- :atom: [react](https://github.com/facebook/react) - A declarative, efficient, and flexible JavaScript library for building user interfaces
 
 ---
 
@@ -90,11 +84,7 @@ my-tool
     └── index.test.js
 ```
 
-### Options
-
-`--use-ink`
-
-Include `ink`. `ink` is a way to write command line output using the popular ui library `react`.
+<!-- ### Options -->
 
 <!-- `--verbose` (TODO)
 

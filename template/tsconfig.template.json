@@ -1,9 +1,5 @@
 {
   "compilerOptions": {
-    {{ #useInk }}
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true,
-    {{ /useInk }}
     "moduleResolution": "node",
     "esModuleInterop": true,
     "strict": true,

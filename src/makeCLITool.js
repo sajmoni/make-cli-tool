@@ -32,21 +32,9 @@ const devDependencies = [
   'np@7.1.0',
   'chokidar-cli@2.1.0',
   '@types/yargs@15.0.12',
-  // * --
 ]
 
-const inkDependencies = ['ink@3.0.8', 'react@17.0.1']
-
-const inkDevDependencies = [
-  'ink-testing-library@2.1.0',
-  'eslint-config-xo-react@0.23.0',
-  'eslint-plugin-react@7.21.5',
-  'eslint-plugin-react-hooks@4.2.0',
-  '@babel/preset-react@7.12.10',
-  '@types/react@17.0.0',
-]
-
-module.exports = ({ toolName, useInk }) => {
+module.exports = ({ toolName }) => {
   const rootPath = path.resolve(toolName)
 
   let initializedGit
@@ -63,7 +51,7 @@ module.exports = ({ toolName, useInk }) => {
         }
 
         fs.mkdirSync(rootPath)
-        const packageJsonTemplate = getPackageJsonTemplate({ toolName, useInk })
+        const packageJsonTemplate = getPackageJsonTemplate({ toolName })
 
         fs.writeFileSync(
           path.join(rootPath, 'package.json'),
@@ -131,25 +119,12 @@ module.exports = ({ toolName, useInk }) => {
           source: 'index.template.js',
           // TODO: Handle non ink case
           destination: 'src/index.tsx',
-          options: {
-            useInk,
-          },
         })
 
         createFileFromTemplate({
           source: 'tsconfig.template.json',
           destination: 'tsconfig.json',
-          options: {
-            useInk,
-          },
         })
-
-        if (useInk) {
-          fs.copySync(
-            path.join(__dirname, 'template/App.tsx'),
-            path.join(rootPath, 'src/App.tsx'),
-          )
-        }
 
         const exampleProjectPackageJson = {
           name: 'example',
@@ -176,13 +151,8 @@ module.exports = ({ toolName, useInk }) => {
       task: () => {
         const command = 'yarn'
         const defaultArgs = ['add', '--exact']
-        let devArgs = defaultArgs.concat('--dev').concat(devDependencies)
-        let prodArgs = defaultArgs.concat(dependencies)
-
-        if (useInk) {
-          prodArgs = prodArgs.concat(inkDependencies)
-          devArgs = devArgs.concat(inkDevDependencies)
-        }
+        const devArgs = defaultArgs.concat('--dev').concat(devDependencies)
+        const prodArgs = defaultArgs.concat(dependencies)
 
         return execa(command, devArgs)
           .then(() => execa(command, prodArgs))
