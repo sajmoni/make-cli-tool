@@ -15,6 +15,7 @@ const dependencies = ['yargs@16.2.0', 'chalk@4.1.0']
 
 const devDependencies = [
   'typescript@4.1.3',
+  'package-preview@4.0.0',
   'ava@3.15.0',
   'np@7.1.0',
   '@types/yargs@15.0.12',
