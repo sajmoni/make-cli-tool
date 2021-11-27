@@ -1,4 +1,4 @@
-module.exports = ({ toolName }) => {
+const getPackageJsonTemplate = (toolName: string) => {
   const packageJsonTemplate = {
     name: toolName,
     license: 'MIT',
@@ -6,23 +6,20 @@ module.exports = ({ toolName }) => {
     description: '',
     keywords: [],
     scripts: {
-      build: 'node build.js',
+      build: 'tsc',
       test: 'ava',
-      release: 'yarn clean && yarn audit && yarn build && np',
-      clean: `rm -f ${toolName}.tgz`,
+      clean: 'rm -rf dist',
+      release: 'npm run clean && npm run build && np --no-tests',
       start:
-        'chokidar "src" -c "node serve.js && node dist/index.js" --initial --silent',
+        'chokidar "src" -c "npm run build && node dist/index.js" --initial --silent',
       go: './build-test.sh',
       qa: 'tsc && xo --fix',
     },
     bin: 'dist/index.js',
     files: ['dist/'],
-    directories: {
-      example: 'example',
-    },
     ava: {
-      require: ['./script/setupTests.js'],
-      extensions: ['js', 'ts', 'tsx'],
+      require: ['esbuild-runner/register'],
+      extensions: ['ts'],
     },
     prettier: {
       trailingComma: 'all',
@@ -34,7 +31,6 @@ module.exports = ({ toolName }) => {
     husky: {
       hooks: {
         'pre-commit': 'lint-staged',
-        'pre-push': 'yarn test',
       },
     },
     xo: {
@@ -51,3 +47,5 @@ module.exports = ({ toolName }) => {
 
   return packageJsonTemplate
 }
+
+export default getPackageJsonTemplate

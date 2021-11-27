@@ -63,33 +63,6 @@ npx npm-name-cli <tool-name>
 npx make-cli-tool my-tool
 ```
 
-The output file structure will look like this:
-
-```
-my-tool
-├── .gitignore
-├── .npmrc
-├── build-test.sh
-├── lint-staged.config.js
-├── package.json
-├── README.md
-├── rollup.config.js
-├── tsconfig.json
-├── yarn.lock
-├── node_modules/
-├── example/
-│   └── package.json
-└── src/
-    ├── index.js
-    └── index.test.js
-```
-
-<!-- ### Options -->
-
-<!-- `--verbose` (TODO)
-
-Display full output. Useful when debugging. -->
-
 ---
 
 ## What to do after the script is run
@@ -129,24 +102,6 @@ https://help.github.com/en/github/building-a-strong-community/about-issue-and-pu
 
 ---
 
-## :computer: Develop
+### Requirements
 
-### Commands
-
-| Command        | Description                                    |
-| -------------- | ---------------------------------------------- |
-| `yarn build`   | Generate files in the `dist` folder            |
-| `yarn release` | Start the process to release a new version     |
-| `yarn qa`      | Run type check with `tsc` and lint with `xo`   |
-| `yarn clean`   | Remove build artefact (`.tgz` file)            |
-| `yarn go`      | Builds, packs and installs to `example` folder |
-
-### Workflow
-
-1. Make changes
-2. `yarn go` and verify that your changes work.
-3. Commit to `master` or make `PR`
-
-#### Release
-
-`yarn release`
+`node >= 16`
