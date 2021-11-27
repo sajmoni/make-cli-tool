@@ -7,6 +7,7 @@ const getPackageJsonTemplate = (toolName: string) => {
     keywords: [],
     scripts: {
       build: 'tsc',
+      version: 'npm run build',
       test: 'ava',
       clean: 'rm -rf dist',
       release: 'npm run clean && npm run build && np --no-tests',
