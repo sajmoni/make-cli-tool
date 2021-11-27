@@ -1,7 +1,6 @@
 import fs from 'fs-extra'
 import Mustache from 'mustache'
 
-// TODO: Delete this
 const createFileFromTemplate = ({
   source,
   destination,
