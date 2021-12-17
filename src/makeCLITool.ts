@@ -11,14 +11,14 @@ import Listr from 'listr'
 import getPackageJsonTemplate from './getPackageJsonTemplate'
 import createFileFromTemplate from './createFileFromTemplate'
 
-const dependencies = ['yargs@16.2.0', 'chalk@4.1.0']
+const dependencies = ['yargs@17.3.0', 'chalk@4.1.0']
 
 const devDependencies = [
-  'typescript@4.1.3',
+  'typescript@4.5.4',
   'package-preview@4.0.0',
   'ava@3.15.0',
-  'np@7.1.0',
-  '@types/yargs@15.0.12',
+  'np@7.6.0',
+  '@types/yargs@17.0.7',
   'chokidar-cli@3.0.0',
 ]
 
